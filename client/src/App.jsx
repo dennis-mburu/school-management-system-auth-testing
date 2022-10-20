@@ -1,13 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import AdminView from "./components/AdminView/AdminView";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
+import ParentView from "./components/ParentView/ParentView";
+import StudentView from "./components/StudentView/StudentView";
+import TeacherView from "./components/TeacherView/TeacherView";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
 
   return (
-    <h1 className="text-3xl font-bold underline ">
-      Hello world!
-    </h1>
-  )
+    <>
+      <main className="min-h-[92vh]">
+        <Navbar user={user} setUser={setUser} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/teacher" element={<TeacherView />} />
+          <Route path="/student" element={<StudentView />} />
+          <Route path="/parent" element={<ParentView />} />
+          <Route path="/admin" element={<AdminView />} />
+        </Routes>
+      </main>
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
