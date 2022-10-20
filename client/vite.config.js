@@ -27,6 +27,16 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/teacher_logout": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/teacher_auth": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });
