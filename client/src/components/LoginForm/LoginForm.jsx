@@ -9,7 +9,7 @@ function LoginForm({ setUser }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  function handleSubmit(e) {
+  function handleAdminSubmit(e) {
     e.preventDefault();
     fetch("/admin_login", {
       method: "POST",
@@ -30,6 +30,29 @@ function LoginForm({ setUser }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+  }
+
+  function handleTeacherSubmit(e) {
+    // e.preventDefault();
+    // fetch("/admin_login", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password,
+    //   }),
+    // }).then((r) => {
+    //   if (r.ok) {
+    //     r.json().then((user) => {
+    //       setUser(user);
+    //     });
+    //     navigate("/admin");
+    //   } else {
+    //     r.json().then((err) => setErrors(err.errors));
+    //   }
+    // });
   }
 
   return (
@@ -74,17 +97,17 @@ function LoginForm({ setUser }) {
         </h2>
 
         <div className="flex gap-4 flex-wrap">
-        <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
+        <button type="submit" onClick={handleAdminSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
           Admin
         </button>
-        <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
+        <button type="submit" onClick={handleTeacherSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
           Teacher
         </button>
-        <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
+        {/* <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
           Student
         </button>        <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
           Parent
-        </button>
+        </button> */}
         </div>
 
 
