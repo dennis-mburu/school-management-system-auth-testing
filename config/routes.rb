@@ -7,4 +7,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+
+  # ADMIN AUTH
+  post "/admin_login", to: "admin_sessions#create"
+  delete "/admin_logout", to: "admin_sessions#destroy"
+  get "/admin_auth", to: "admins#show"
+  post "/admin_signup", to: "admins#create"
 end

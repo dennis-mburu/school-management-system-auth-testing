@@ -11,7 +11,7 @@ function LoginForm({ setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/api/customer_login", {
+    fetch("/admin_login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ function LoginForm({ setUser }) {
         r.json().then((user) => {
           setUser(user);
         });
-        navigate("/");
+        navigate("/admin");
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
