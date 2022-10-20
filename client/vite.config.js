@@ -37,6 +37,21 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/student_login": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/student_logout": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/student_auth": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

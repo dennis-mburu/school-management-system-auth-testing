@@ -22,4 +22,10 @@ Rails.application.routes.draw do
   get "/teacher_auth", to: "teachers#show"
   post "/teacher_signup", to: "teachers#create"
 
+  #STUDENT AUTH
+  post "/student_login", to: "student_sessions#create"
+  delete "/student_logout", to: "student_sessions#destroy"
+  get "/student_auth", to: "students#show"
+  post "/student_signup", to: "students#create"
+
 end

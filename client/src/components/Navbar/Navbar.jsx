@@ -27,6 +27,16 @@ function Navbar({ user, setUser }) {
           }
         });
         break;
+      case "student":
+        fetch("/student_logout", {
+          method: "DELETE",
+        }).then((r) => {
+          if (r.ok) {
+            setUser(null);
+            navigate("/");
+          }
+        });
+        break;
     }
   }
 

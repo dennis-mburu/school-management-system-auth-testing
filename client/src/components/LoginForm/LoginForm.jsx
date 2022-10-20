@@ -55,12 +55,33 @@ function LoginForm({ setUser }) {
     });
   }
 
+  function handleStudentSubmit(e){
+    e.preventDefault();
+    fetch("/student_login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user);
+        });
+        navigate("/student");
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+
   return (
     <div className="form-container">
       <h1 className="text-center p-6 text-4xl font-medium">LOGIN</h1>
-      <form
-        className=" w-2/3 my-6 mx-auto flex flex-col"
-      >
+      <form className=" w-2/3 my-6 mx-auto flex flex-col">
         <label htmlFor="username" className="text-l">
           UserName:
         </label>
@@ -92,25 +113,38 @@ function LoginForm({ setUser }) {
             </div>
           );
         })}
-        <h2 className="text-center mt-6 py-6 text-xl ">
-          Log in as:
-        </h2>
+        <h2 className="text-center mt-6 py-6 text-xl ">Log in as:</h2>
 
         <div className="flex gap-4 flex-wrap">
-        <button type="submit" onClick={handleAdminSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
-          Admin
-        </button>
-        <button type="submit" onClick={handleTeacherSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
-          Teacher
-        </button>
-        {/* <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
-          Student
-        </button>        <button type="submit" onClick={handleSubmit} className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded">
-          Parent
-        </button> */}
+          <button
+            type="submit"
+            onClick={handleAdminSubmit}
+            className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded"
+          >
+            Admin
+          </button>
+          <button
+            type="submit"
+            onClick={handleTeacherSubmit}
+            className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded"
+          >
+            Teacher
+          </button>
+          <button
+            type="submit"
+            onClick={handleStudentSubmit}
+            className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded"
+          >
+            Student
+          </button>{" "}
+          {/* <button
+            type="submit"
+            onClick={handleParentSubmit}
+            className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded"
+          >
+            Parent
+          </button> */}
         </div>
-
-
       </form>
     </div>
   );
