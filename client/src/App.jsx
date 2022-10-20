@@ -12,6 +12,15 @@ import TeacherView from "./components/TeacherView/TeacherView";
 function App() {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    fetch("/admin_auth").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+
   return (
     <>
       <main className="min-h-[92vh]">
