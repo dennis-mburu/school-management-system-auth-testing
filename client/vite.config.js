@@ -52,6 +52,21 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      "/parent_login": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
+      "/parent_logout": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },      
+      "/parent_auth": {
+        target: "http://localhost:3000",
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });

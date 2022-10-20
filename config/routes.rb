@@ -28,4 +28,10 @@ Rails.application.routes.draw do
   get "/student_auth", to: "students#show"
   post "/student_signup", to: "students#create"
 
+  #PARENT AUTH
+  post "/parent_login", to: "parent_sessions#create"
+  delete "/parent_logout", to: "parent_sessions#destroy"
+  get "/parent_auth", to: "parents#show"
+  post "/parent_signup", to: "parents#create"
+
 end

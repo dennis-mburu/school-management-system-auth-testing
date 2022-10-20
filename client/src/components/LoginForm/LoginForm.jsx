@@ -78,6 +78,30 @@ function LoginForm({ setUser }) {
     });
   }
 
+
+  function handleParentSubmit(e){
+    e.preventDefault();
+    fetch("/parent_login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user);
+        });
+        navigate("/parent");
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
+  }
+
   return (
     <div className="form-container">
       <h1 className="text-center p-6 text-4xl font-medium">LOGIN</h1>
@@ -137,13 +161,13 @@ function LoginForm({ setUser }) {
           >
             Student
           </button>{" "}
-          {/* <button
+          <button
             type="submit"
             onClick={handleParentSubmit}
             className="bg-[#1C1AB1] hover:bg-blue-700 mt-2 w-1/3 mx-auto text-white font-bold py-2 px-4 rounded"
           >
             Parent
-          </button> */}
+          </button>
         </div>
       </form>
     </div>

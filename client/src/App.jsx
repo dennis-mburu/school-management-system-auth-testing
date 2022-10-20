@@ -36,6 +36,13 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/parent_auth").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -47,8 +54,7 @@ function App() {
           <Route path="/student" element={<StudentView />} />
           <Route path="/parent" element={<ParentView />} />
           <Route path="/admin" element={<AdminView />} />
-          <Route path="/login" element={<LoginForm  setUser={setUser}/>} />
-
+          <Route path="/login" element={<LoginForm setUser={setUser} />} />
         </Routes>
       </main>
       <Footer />

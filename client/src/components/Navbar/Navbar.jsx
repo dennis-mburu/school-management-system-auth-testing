@@ -37,6 +37,16 @@ function Navbar({ user, setUser }) {
           }
         });
         break;
+      case "parent":
+        fetch("/parent_logout", {
+          method: "DELETE",
+        }).then((r) => {
+          if (r.ok) {
+            setUser(null);
+            navigate("/");
+          }
+        });
+        break;
     }
   }
 
