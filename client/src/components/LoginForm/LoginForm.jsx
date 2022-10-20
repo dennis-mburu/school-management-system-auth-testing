@@ -33,26 +33,26 @@ function LoginForm({ setUser }) {
   }
 
   function handleTeacherSubmit(e) {
-    // e.preventDefault();
-    // fetch("/admin_login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     username,
-    //     password,
-    //   }),
-    // }).then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((user) => {
-    //       setUser(user);
-    //     });
-    //     navigate("/admin");
-    //   } else {
-    //     r.json().then((err) => setErrors(err.errors));
-    //   }
-    // });
+    e.preventDefault();
+    fetch("/teacher_login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => {
+          setUser(user);
+        });
+        navigate("/teacher");
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
 
   return (

@@ -14,4 +14,12 @@ Rails.application.routes.draw do
   delete "/admin_logout", to: "admin_sessions#destroy"
   get "/admin_auth", to: "admins#show"
   post "/admin_signup", to: "admins#create"
+
+
+  #TEACHER AUTH
+  post "/teacher_login", to: "teacher_sessions#create"
+  delete "/teacher_logout", to: "teacher_sessions#destroy"
+  get "/teacher_auth", to: "teachers#show"
+  post "/teacher_signup", to: "teachers#create"
+
 end
